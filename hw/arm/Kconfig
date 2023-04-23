@@ -215,6 +215,10 @@ config REALVIEW
     select DS1338 # I2C RTC+NVRAM
     select USB_OHCI
 
+config RESILIENTMONITOR
+    bool
+    select STM32L432_SOC
+
 config SBSA_REF
     bool
     imply PCI_DEVICES
@@ -350,6 +354,12 @@ config RASPI
     select PL011 # UART
     select SDHCI
     select USB_DWC2
+
+config STM32L432_SOC
+    bool
+    select ARM_V7M
+    select STM32L4XX_USART
+    select STM32L4XX_SYSCFG
 
 config STM32F100_SOC
     bool
