@@ -9,6 +9,7 @@
 #include "sysemu/sysemu.h"
 
 #define USART_ADDR 0x40013800
+#define PWR_ADDR 0x40007000
 
 static void stm32l432_soc_initfn(Object *obj)
 {
@@ -17,6 +18,8 @@ static void stm32l432_soc_initfn(Object *obj)
     object_initialize_child(obj, "armv7m", &s->armv7m, TYPE_ARMV7M);
     object_initialize_child(obj, "usart", &s->usart,
                             TYPE_STM32L4XX_USART);
+    object_initialize_child(obj, "pwr", &s->pwr,
+                            TYPE_STM32L4XX_PWR);
 
     s->sysclk = qdev_init_clock_in(DEVICE(s), "sysclk", NULL, NULL, 0);
 }
@@ -70,6 +73,15 @@ static void stm32l432_soc_realize(DeviceState *dev_soc, Error **errp)
     }
     busdev = SYS_BUS_DEVICE(dev);
     sysbus_mmio_map(busdev, 0, USART_ADDR);
+
+    /* Attach PWR controller */
+    dev = DEVICE(&s->pwr);
+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->pwr), errp))
+    {
+        return;
+    }
+    busdev = SYS_BUS_DEVICE(dev);
+    sysbus_mmio_map(busdev, 0, PWR_ADDR);
 }
 
 static Property stm32l432_soc_properties[] = {

@@ -2,6 +2,7 @@
 #define HW_ARM_STM32L432_SOC_H
 
 #include "hw/char/stm32l4xx_usart.h"
+#include "hw/misc/stm32l4xx_pwr.h"
 #include "hw/or-irq.h"
 #include "hw/arm/armv7m.h"
 #include "hw/clock.h"
@@ -27,6 +28,7 @@ struct STM32L432State
     ARMv7MState armv7m;
 
     STM32L4XXUsartState usart;
+    STM32L4XXPwrState pwr;
 
     MemoryRegion ram;
     MemoryRegion flash;
