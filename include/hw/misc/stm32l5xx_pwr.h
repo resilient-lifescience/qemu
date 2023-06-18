@@ -8,22 +8,22 @@ When the guest system writes 0bx1xx to that register, we trigger a qemu shutdown
 
 Example usage in the guest system:
 
-    #define PWR_ADDR 0x40007000
+    #define PWR_ADDR 0x50007000
     #define PWR_CR1 (USART_ADDR + 0x00)
     *((char*)USART_TDR) = 0b0100;
 */
-#ifndef HW_STM32L4XX_PWR_H
-#define HW_STM32L4XX_PWR_H
+#ifndef HW_STM32L5XX_PWR_H
+#define HW_STM32L5XX_PWR_H
 
 #include "hw/sysbus.h"
 #include "qom/object.h"
 
 #define PWR_CR1 0x00
 
-#define TYPE_STM32L4XX_PWR "stm32l4xx-pwr"
-OBJECT_DECLARE_SIMPLE_TYPE(STM32L4XXPwrState, STM32L4XX_PWR)
+#define TYPE_STM32L5XX_PWR "stm32l5xx-pwr"
+OBJECT_DECLARE_SIMPLE_TYPE(STM32L5XXPwrState, STM32L5XX_PWR)
 
-struct STM32L4XXPwrState
+struct STM32L5XXPwrState
 {
     /* <private> */
     SysBusDevice parent_obj;
@@ -31,4 +31,4 @@ struct STM32L4XXPwrState
     /* <public> */
     MemoryRegion mmio;
 };
-#endif /* HW_STM32L4XX_PWR_H */
+#endif /* HW_STM32L5XX_PWR_H */

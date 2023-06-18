@@ -6,13 +6,13 @@ We borrow a single USART register register for this purpose: USART_TDR.
 When the guest system writes a character to that register, qemu will print
 it to the console. Example usage in the guest system:
 
-    #define USART_ADDR 0x40013800
+    #define USART_ADDR 0x50013800
     #define USART_TDR (USART_ADDR + 0x28)
     *((char*)USART_TDR) = 'a';
     *((char*)USART_TDR) = 'b';
 */
-#ifndef HW_STM32L4XX_USART_H
-#define HW_STM32L4XX_USART_H
+#ifndef HW_STM32L5XX_USART_H
+#define HW_STM32L5XX_USART_H
 
 #include "hw/sysbus.h"
 #include "chardev/char-fe.h"
@@ -20,10 +20,10 @@ it to the console. Example usage in the guest system:
 
 #define USART_TDR 0x28
 
-#define TYPE_STM32L4XX_USART "stm32l4xx-usart"
-OBJECT_DECLARE_SIMPLE_TYPE(STM32L4XXUsartState, STM32L4XX_USART)
+#define TYPE_STM32L5XX_USART "stm32l5xx-usart"
+OBJECT_DECLARE_SIMPLE_TYPE(STM32L5XXUsartState, STM32L5XX_USART)
 
-struct STM32L4XXUsartState
+struct STM32L5XXUsartState
 {
     /* <private> */
     SysBusDevice parent_obj;
@@ -37,4 +37,4 @@ struct STM32L4XXUsartState
 
     CharBackend chr;
 };
-#endif /* HW_STM32L4XX_USART_H */
+#endif /* HW_STM32L5XX_USART_H */

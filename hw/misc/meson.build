@@ -97,7 +97,7 @@ softmmu_ss.add(when: 'CONFIG_XLNX_VERSAL', if_true: files(
 softmmu_ss.add(when: 'CONFIG_STM32F2XX_SYSCFG', if_true: files('stm32f2xx_syscfg.c'))
 softmmu_ss.add(when: 'CONFIG_STM32F4XX_SYSCFG', if_true: files('stm32f4xx_syscfg.c'))
 softmmu_ss.add(when: 'CONFIG_STM32F4XX_EXTI', if_true: files('stm32f4xx_exti.c'))
-softmmu_ss.add(when: 'CONFIG_STM32L4XX_PWR', if_true: files('stm32l4xx_pwr.c'))
+softmmu_ss.add(when: 'CONFIG_STM32L5XX_PWR', if_true: files('stm32l5xx_pwr.c'))
 softmmu_ss.add(when: 'CONFIG_MPS2_FPGAIO', if_true: files('mps2-fpgaio.c'))
 softmmu_ss.add(when: 'CONFIG_MPS2_SCC', if_true: files('mps2-scc.c'))
 

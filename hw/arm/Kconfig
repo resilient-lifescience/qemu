@@ -217,7 +217,7 @@ config REALVIEW
 
 config RESILIENTMONITOR
     bool
-    select STM32L432_SOC
+    select STM32L562_SOC
 
 config SBSA_REF
     bool
@@ -355,11 +355,11 @@ config RASPI
     select SDHCI
     select USB_DWC2
 
-config STM32L432_SOC
+config STM32L562_SOC
     bool
     select ARM_V7M
-    select STM32L4XX_USART
-    select STM32L4XX_PWR
+    select STM32L5XX_USART
+    select STM32L5XX_PWR
 
 config STM32F100_SOC
     bool
